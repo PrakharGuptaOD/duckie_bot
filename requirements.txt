@@ -1,7 +1,3 @@
-discord
-youtube_dl
-asyncio
-os
-collections
-typing
-dotenv
+discord.py
+yt-dlp
+python-dotenv
