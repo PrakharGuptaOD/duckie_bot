@@ -11,6 +11,9 @@ import asyncio
 import os
 from collections import deque
 from typing import Optional
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # YouTube DL options
 ytdl_format_options = {
@@ -346,5 +349,5 @@ async def disconnect(interaction: discord.Interaction):
 # Run the bot
 if __name__ == "__main__":
     # Replace with your bot token
-    
+    api_key = os.getenv('DISCORD_TOKEN')
     bot.run(DISCORD_TOKEN)
