@@ -346,5 +346,5 @@ async def disconnect(interaction: discord.Interaction):
 # Run the bot
 if __name__ == "__main__":
     # Replace with your bot token
-    TOKEN = "YOUR_BOT_TOKEN_HERE"
-    bot.run(TOKEN)
+    
+    bot.run(DISCORD_TOKEN)
