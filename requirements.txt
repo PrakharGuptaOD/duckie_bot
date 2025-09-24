@@ -1,1 +1,7 @@
-
+discord
+youtube_dl
+asyncio
+os
+collections
+typing
+dotenv
