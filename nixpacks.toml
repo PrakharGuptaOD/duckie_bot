@@ -1,5 +1,2 @@
-# Version 2 - Force cache clear
 [phases.setup]
-pkgs = [
-  "ffmpeg"
-]
+nixPkgs = ["ffmpeg"]
