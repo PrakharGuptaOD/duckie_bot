@@ -1,2 +1,11 @@
 [phases.setup]
-nixPkgs = ["ffmpeg"]
+nixPkgs = ["python3", "gcc", "ffmpeg"]
+
+[phases.install]
+cmds = [
+    "python -m venv --copies /opt/venv",
+    ". /opt/venv/bin/activate && pip install -r requirements.txt"
+]
+
+[phases.start]
+cmd = "PATH=/nix/var/nix/profiles/default/bin:$PATH /opt/venv/bin/python main.py"
