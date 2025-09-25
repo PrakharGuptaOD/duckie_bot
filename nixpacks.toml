@@ -1,1 +1,4 @@
-
+[phases.setup]
+pkgs = [
+  "ffmpeg"
+]
