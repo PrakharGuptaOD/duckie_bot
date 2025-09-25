@@ -6,7 +6,7 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-import youtube_dl
+import yt_dlp as youtube_dl
 import asyncio
 import os
 from collections import deque
