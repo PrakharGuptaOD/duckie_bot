@@ -1,12 +1,12 @@
 # Discord Music Bot with YouTube and SoundCloud Support
 # Required packages:
-# pip install discord.py youtube_dl pynacl ffmpeg-python
+# pip install discord.py yt-dlp pynacl ffmpeg-python
 # Also need FFmpeg installed on system: https://ffmpeg.org/download.html
 
 import discord
 from discord.ext import commands
 from discord import app_commands
-import yt_dlp as youtube_dl
+import yt_dlp as youtube_dl # <-- YEH LINE CHANGE HUI HAI
 import asyncio
 import os
 from collections import deque
@@ -206,7 +206,7 @@ async def play_next(guild_id, voice_client, text_channel):
         queue.is_playing = False
         # Leave after 1 minute of inactivity
         await asyncio.sleep(60)
-        if not voice_client.is_playing() and not queue.is_playing:
+        if voice_client and not voice_client.is_playing() and not queue.is_playing:
             await voice_client.disconnect()
 
 @bot.tree.command(name="skip", description="Skip the current song")
@@ -326,9 +326,8 @@ async def volume(interaction: discord.Interaction, volume: int):
         await interaction.response.send_message("Bot is not connected to a voice channel!", ephemeral=True)
         return
     
-    queue = bot.get_queue(interaction.guild.id)
-    if queue.current:
-        queue.current.volume = volume / 100
+    if voice_client.source:
+        voice_client.source.volume = volume / 100
     
     await interaction.response.send_message(f"🔊 Volume set to {volume}%")
 
@@ -348,6 +347,9 @@ async def disconnect(interaction: discord.Interaction):
 
 # Run the bot
 if __name__ == "__main__":
-    # Replace with your bot token
+    # Token is loaded from .env file using load_dotenv()
     api_key = os.getenv('DISCORD_TOKEN')
-    bot.run(api_key)
+    if api_key is None:
+        print("Error: DISCORD_TOKEN not found. Make sure you have a .env file or an environment variable set.")
+    else:
+        bot.run(api_key)
