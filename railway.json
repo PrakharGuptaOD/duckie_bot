@@ -4,6 +4,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "python main.py"
+    "startCommand": "PATH=/nix/var/nix/profiles/default/bin:$PATH python main.py"
   }
 }
