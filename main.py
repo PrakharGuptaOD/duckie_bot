@@ -350,4 +350,4 @@ async def disconnect(interaction: discord.Interaction):
 if __name__ == "__main__":
     # Replace with your bot token
     api_key = os.getenv('DISCORD_TOKEN')
-    bot.run(DISCORD_TOKEN)
+    bot.run(api_key)
